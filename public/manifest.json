@@ -1,6 +1,6 @@
 {
-  "name": "Bolio Chat GPT - Answer questions based on existing knowledge",
-  "short_name": "Bolio Chat GPT",
+  "name": "Bolio ChatGPT - Answer questions based on existing knowledge",
+  "short_name": "Bolio ChatGPT",
   "icons": [
     {
       "src": "/img/favicon/android-icon-36x36.png",
@@ -40,7 +40,7 @@
     }
   ],
   "background_color": "#121214",
-  "description": "Bolio Chat GPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure.",
+  "description": "Bolio ChatGPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure.",
   "display": "fullscreen",
   "start_url": "/",
   "theme_color": "#121214"

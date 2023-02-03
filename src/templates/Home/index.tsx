@@ -33,7 +33,7 @@ function Home() {
     <Base>
       <Hero
         content={{
-          title: 'Bolio Chat GPT',
+          title: 'Bolio ChatGPT',
           description:
             'Enter a text, and the model will generate another part, following a similar style and structure. 🪄⚡️'
         }}

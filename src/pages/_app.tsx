@@ -31,11 +31,11 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>
-          Bolio Chat GPT - Answer questions based on existing knowledge
+          Bolio ChatGPT - Answer questions based on existing knowledge
         </title>
         <meta
           name="description"
-          content="Bolio Chat GPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure."
+          content="Bolio ChatGPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure."
         />
         <Favicon />
       </Head>
