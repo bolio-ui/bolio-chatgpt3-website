@@ -5,40 +5,44 @@ import Document, {
   NextScript,
   DocumentContext
 } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import { CssBaseline } from '@bolio-ui/core'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
+    const initialProps = await Document.getInitialProps(ctx)
+    const styles = CssBaseline.flush()
 
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />)
-        })
-
-      const initialProps = await Document.getInitialProps(ctx)
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        )
-      }
-    } finally {
-      sheet.seal()
+    return {
+      ...initialProps,
+      styles: (
+        <>
+          {initialProps.styles}
+          {styles}
+        </>
+      )
     }
   }
 
   render() {
     return (
-      <Html lang="pt-BR">
+      <Html lang="en">
         <Head />
         <body>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              (function(){
+                if (!window.localStorage) return;
+                if (window.localStorage.getItem('theme') === 'light') {
+                  document.documentElement.style.background = '#fff';
+                  document.body.style.background = '#fff';
+                } else {
+                  document.documentElement.style.background = '#0f0d23';
+                  document.body.style.background = '#0f0d23';
+                }
+              })()`
+            }}
+          />
           <Main />
           <NextScript />
         </body>
