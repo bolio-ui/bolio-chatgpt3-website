@@ -8,7 +8,7 @@ import Favicon from 'src/components/Favicon'
 import Navigation from 'src/components/Navigation'
 import SEO from '../../next-seo.config.js'
 
-import { purpleTheme } from 'src/theme'
+import { grayTheme } from 'src/theme'
 
 function App({ Component, pageProps }: AppProps) {
   const [themeType, setThemeType] = useState<ThemeType>('light')
@@ -31,15 +31,15 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>
-          Bolio Icons - Simplicity, consistency and readability icons
+          Bolio Chat GPT - Answer questions based on existing knowledge
         </title>
         <meta
           name="description"
-          content="Bolio Icons is a collection of simply beautiful icons. Each icon is designed with an emphasis on simplicity, consistency and readability."
+          content="Bolio Chat GPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure."
         />
         <Favicon />
       </Head>
-      <BolioUIProvider themes={[purpleTheme]} themeType={themeType}>
+      <BolioUIProvider themes={[grayTheme]} themeType={themeType}>
         <SettingsContext.Provider value={{ themeType, switchTheme }}>
           <DefaultSeo {...SEO} />
           <CssBaseline />

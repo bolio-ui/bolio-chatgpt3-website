@@ -1,21 +1,47 @@
 {
-  "name": "React - Boilerplate",
-  "short_name": "React",
+  "name": "Bolio Chat GPT - Answer questions based on existing knowledge",
+  "short_name": "Bolio Chat GPT",
   "icons": [
     {
-      "src": "/img/icon-192.png",
+      "src": "/img/favicon/android-icon-36x36.png",
+      "sizes": "36x36",
       "type": "image/png",
-      "sizes": "192x192"
+      "density": "0.75"
     },
     {
-      "src": "/img/icon-512.png",
+      "src": "/img/favicon/android-icon-48x48.png",
+      "sizes": "48x48",
       "type": "image/png",
-      "sizes": "512x512"
+      "density": "1.0"
+    },
+    {
+      "src": "/img/favicon/android-icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "density": "1.5"
+    },
+    {
+      "src": "/img/favicon/android-icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "density": "2.0"
+    },
+    {
+      "src": "/img/favicon/android-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "density": "3.0"
+    },
+    {
+      "src": "/img/favicon/android-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "density": "4.0"
     }
   ],
-  "background_color": "#06092B",
-  "description": "Boilerlate utilizando Typescript, React, NextJS e Styled Components!",
+  "background_color": "#121214",
+  "description": "Bolio Chat GPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure.",
   "display": "fullscreen",
   "start_url": "/",
-  "theme_color": "#06092B"
+  "theme_color": "#121214"
 }
