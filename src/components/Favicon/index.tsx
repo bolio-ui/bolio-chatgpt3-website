@@ -71,12 +71,12 @@ function Favicon() {
         href="/img/favicon/favicon-16x16.png"
       />
       <link rel="manifest" href="/img/favicon/manifest.json" />
-      <meta name="msapplication-TileColor" content="#0F0D23" />
+      <meta name="msapplication-TileColor" content="#121214" />
       <meta
         name="msapplication-TileImage"
         content="/img/favicon/ms-icon-144x144.png"
       />
-      <meta name="theme-color" content="#0F0D23" />
+      <meta name="theme-color" content="#121214" />
     </>
   )
 }

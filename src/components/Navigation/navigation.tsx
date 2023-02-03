@@ -54,7 +54,7 @@ const Navigation: React.FC = () => {
                 justify="flex-start"
                 style={{ marginTop: '8px' }}
               >
-                <Logo name="Bolio Icons" />
+                <Logo name="Bolio Chat GPT" />
               </Grid>
               <Grid xs={6} md={6} justify="flex-end">
                 <div className="controls">
@@ -121,12 +121,12 @@ const Navigation: React.FC = () => {
                       h="28px"
                       py={0}
                       px={0}
-                      aria-label="Toggle Purple mode"
+                      aria-label="Toggle Gray mode"
                       className="theme-button"
                       type="abort"
                       onClick={() =>
                         settings.switchTheme(
-                          theme.type === 'light' ? 'purple' : 'light'
+                          theme.type === 'light' ? 'gray' : 'light'
                         )
                       }
                     >
@@ -163,7 +163,7 @@ const Navigation: React.FC = () => {
           top: 0;
           right: 0;
           left: 0;
-          box-shadow: ${theme.type === 'dark'
+          box-shadow: ${theme.type === 'gray'
             ? 'rgba(255, 255, 255, 0.1) 0 0 20px 0'
             : 'rgba(0, 0, 0, 0.1) 0 0 20px 0'};
           backdrop-filter: saturate(180%) blur(10px);

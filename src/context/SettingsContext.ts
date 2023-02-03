@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 
-export const themes = ['light', 'purple'] as const
+export const themes = ['light', 'gray'] as const
 export type ThemeType = typeof themes[number]
 
 interface Settings {

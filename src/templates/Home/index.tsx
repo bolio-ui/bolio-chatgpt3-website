@@ -3,17 +3,15 @@ import { Section, Container } from '@bolio-ui/core'
 import Base from 'src/templates/Base'
 import Hero from 'src/components/Hero'
 import IconsGallery from 'src/components/IconsGallery'
-import SectionDemonstration from './SectionDemonstration'
-import SectionCommunity from './SectionCommunity'
 
 function Home() {
   return (
     <Base>
       <Hero
         content={{
-          title: 'Bolio Icons',
+          title: 'Bolio Chat GPT',
           description:
-            'Collection of simply beautiful icons. Each icon is designed with an emphasis on simplicity, consistency and readability. 🥷🏼'
+            'Enter a text, and the model will generate another part, following a similar style and structure. 🥷🏼'
         }}
       />
       <Section pb={4}>
@@ -21,8 +19,6 @@ function Home() {
           <IconsGallery />
         </Container>
       </Section>
-      <SectionDemonstration />
-      <SectionCommunity />
     </Base>
   )
 }
