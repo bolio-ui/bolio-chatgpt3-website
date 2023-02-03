@@ -11,7 +11,7 @@ function Home() {
         content={{
           title: 'Bolio Chat GPT',
           description:
-            'Enter a text, and the model will generate another part, following a similar style and structure. 🥷🏼'
+            'Enter a text, and the model will generate another part, following a similar style and structure. 🪄⚡️'
         }}
       />
       <Section pb={4}>
