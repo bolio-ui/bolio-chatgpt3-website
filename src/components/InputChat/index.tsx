@@ -3,7 +3,7 @@ import { Spacer, Input, Button, Tooltip } from '@bolio-ui/core'
 import { Send as SendIcon } from '@bolio-ui/icons'
 import Footer from 'src/components/Footer'
 
-const RegexInput: React.FC = () => {
+function InputChat() {
   return (
     <>
       <div className="wrapper">
@@ -37,4 +37,4 @@ const RegexInput: React.FC = () => {
     </>
   )
 }
-export default RegexInput
+export default InputChat

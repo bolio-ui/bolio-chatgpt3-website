@@ -15,15 +15,18 @@ import {
   Star as StarIcon,
   AlertTriangle as AlertTriangleIcon
 } from '@bolio-ui/icons'
+import { useMediaQuery } from 'src/hooks/useMediaQuery'
 import Base from 'src/templates/Base'
+import InputChat from 'src/components/InputChat'
 // import { Formik } from 'formik'
 // import * as Yup from 'yup'
-import RegexInput from './regex-input'
 
 function Home() {
   const { palette, type: themeType } = useTheme()
+
   const [tabValue, setTabValue] = useState<string>('examples')
   const [editorCollapsed, setEditorCollapsed] = useState(false)
+  const isMobile = useMediaQuery(650)
 
   useEffect(() => {
     setTabValue(tabValue)
@@ -40,6 +43,10 @@ function Home() {
   // })
 
   // const handleSubmit = React.useCallback((values, { resetForm }) => {}, [])
+
+  useEffect(() => {
+    setEditorCollapsed(isMobile)
+  }, [isMobile])
 
   const collapseEditor = () => setEditorCollapsed(true)
 
@@ -58,7 +65,7 @@ function Home() {
             <Text>Text</Text>
           </div>
         </div>
-        <RegexInput />
+        <InputChat />
       </div>
       <div id="editor-container" className={containerClassName}>
         <Tabs
@@ -193,7 +200,7 @@ function Home() {
         }
         .content-list {
           margin: auto;
-          padding: 24px;
+          padding: 0 24px;
         }
 
         .container {
@@ -225,6 +232,8 @@ function Home() {
           position: fixed;
           right: 24px;
           bottom: 24px;
+          background-color: ${palette.accents_1};
+          z-index: 1;
         }
         .uncollapse-btn :global(svg) {
           width: 20px;
