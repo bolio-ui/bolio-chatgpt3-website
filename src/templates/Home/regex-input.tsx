@@ -1,57 +1,21 @@
 import React from 'react'
-import { Spacer, Checkbox, Code, Input } from '@bolio-ui/core'
-// import { useTranslation } from 'react-i18next'
+import { Spacer, Input, Button, Tooltip } from '@bolio-ui/core'
+import { Send as SendIcon } from '@bolio-ui/icons'
+import Footer from 'src/components/Footer'
 
-const RegexInput: React.FC<unknown> = () => {
+const RegexInput: React.FC = () => {
   return (
     <>
       <div className="wrapper">
         <div className="content">
           <div className="input-wrapper">
-            <Input
-              data-testid="regex-input"
-              width="100%"
-              //   placeholder={t('Input a regular expression')}
-            />
+            <Input width="100%" placeholder="" />
             <Spacer w={0.5} />
-            {/* <Tooltip text={t('Copy permalink')}>
-              <Button
-                iconRight={<Link />}
-                auto
-                scale={2 / 3}
-                px={0.6}
-                onClick={onCopy}
-              />
-            </Tooltip> */}
+            <Tooltip text={'Enviar'}>
+              <Button iconRight={<SendIcon />} auto scale={2 / 3} px={0.6} />
+            </Tooltip>
           </div>
-
-          <>
-            <Spacer h={1} />
-            <div className="flags-settings">
-              {/* <label>{t('Flags: ')}</label> */}
-              <Spacer w={0.5} />
-              <Checkbox.Group scale={0.75}>
-                {/* <Checkbox value="g">{t('Global search')}</Checkbox>
-                  <Checkbox value="i">{t('Case-insensitive')}</Checkbox>
-                  <Checkbox value="m">{t('Multi-line')}</Checkbox>
-                  <Checkbox value="s">
-                    {t('Allows . to match newline')}
-                  </Checkbox> */}
-              </Checkbox.Group>
-
-              <>
-                <Spacer w={1} />
-                {/* <label>{t('Settings: ')}</label> */}
-                <Spacer w={0.5} />
-                <div>
-                  <Checkbox>
-                    {/* {t('include escape ')} */}
-                    <Code>\</Code>
-                  </Checkbox>
-                </div>
-              </>
-            </div>
-          </>
+          <Footer />
         </div>
       </div>
       <style jsx>{`
@@ -71,9 +35,6 @@ const RegexInput: React.FC<unknown> = () => {
         }
         .flags-settings {
           display: flex;
-        }
-        .flags-settings > :global(.group > .checkbox) {
-          margin-right: calc(calc(0.875 * 8px) * 2);
         }
       `}</style>
     </>

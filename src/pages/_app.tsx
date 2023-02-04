@@ -43,23 +43,6 @@ function App({ Component, pageProps }: AppProps) {
         <SettingsContext.Provider value={{ themeType, switchTheme }}>
           <DefaultSeo {...SEO} />
           <CssBaseline />
-          <style global jsx>{`
-            body {
-              -webkit-font-smoothing: antialiased;
-              -moz-osx-font-smoothing: grayscale;
-              text-rendering: optimizeLegibility;
-              font-size: 1rem;
-              line-height: 1.5;
-              margin: 0;
-              padding: 0;
-              min-height: 100%;
-              position: relative;
-              overflow-x: hidden;
-              font-family: 'Inter', -apple-system, BlinkMacSystemFont,
-                'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-                'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-            }
-          `}</style>
           <Navigation />
           <Component {...pageProps} />
         </SettingsContext.Provider>

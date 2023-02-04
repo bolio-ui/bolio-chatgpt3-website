@@ -36,7 +36,7 @@ function Home() {
     <Base>
       <div className="wrapper" style={style}>
         <div className="graph">
-          <div className="content">
+          <div className="content-list">
             <Text>bbb</Text>
           </div>
         </div>
@@ -105,8 +105,7 @@ function Home() {
             ? 'rgba(0 ,0 ,0 , 0.5)'
             : 'rgba(255, 255, 255, 0.25)'};
         }
-        .content {
-          /* https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container */
+        .content-list {
           margin: auto;
           padding: 24px;
         }
