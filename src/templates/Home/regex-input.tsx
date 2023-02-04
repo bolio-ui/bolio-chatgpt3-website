@@ -33,9 +33,6 @@ const RegexInput: React.FC = () => {
           display: flex;
           align-items: center;
         }
-        .flags-settings {
-          display: flex;
-        }
       `}</style>
     </>
   )

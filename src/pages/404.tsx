@@ -1,5 +1,4 @@
 import React from 'react'
-import NextLink from 'next/link'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import {
@@ -61,22 +60,11 @@ function Home() {
             </Grid.Container>
             <Grid.Container gap={2} justify="center" alignItems="center">
               <Grid xs={6} sm={6} md={2}>
-                <Link
-                  href="https://bolio-ui.com/docs/components/icons"
-                  target="_blank"
-                  width="100%"
-                >
+                <Link href="/" target="_blank" width="100%">
                   <Button type="secondary" rounded width="100%">
-                    Get Started
-                  </Button>
-                </Link>
-              </Grid>
-              <Grid xs={6} sm={6} md={3}>
-                <NextLink href="/">
-                  <Button rounded width="100%">
                     Go to homepage
                   </Button>
-                </NextLink>
+                </Link>
               </Grid>
             </Grid.Container>
           </Container>
