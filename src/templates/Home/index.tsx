@@ -1,15 +1,33 @@
-import React, { useState } from 'react'
-import { Text, Button, useTheme, Spacer } from '@bolio-ui/core'
+import React, { useState, useEffect } from 'react'
+import {
+  Text,
+  Button,
+  useTheme,
+  Card,
+  Grid,
+  Container,
+  Tabs
+} from '@bolio-ui/core'
+import {
+  ChevronsRight as ChevronsRightIcon,
+  ChevronsLeft as ChevronsLeftIcon,
+  Compass as CompassIcon,
+  Star as StarIcon,
+  AlertTriangle as AlertTriangleIcon
+} from '@bolio-ui/icons'
 import Base from 'src/templates/Base'
-import { ChevronsRight, ChevronsLeft, Heart } from '@bolio-ui/icons'
 // import { Formik } from 'formik'
 // import * as Yup from 'yup'
 import RegexInput from './regex-input'
 
 function Home() {
   const { palette, type: themeType } = useTheme()
-  // const { setToast } = useToasts()
+  const [tabValue, setTabValue] = useState<string>('examples')
   const [editorCollapsed, setEditorCollapsed] = useState(false)
+
+  useEffect(() => {
+    setTabValue(tabValue)
+  }, [tabValue, setTabValue])
 
   // const initialValues = {
   //   text: ''
@@ -37,35 +55,109 @@ function Home() {
       <div className="wrapper" style={style}>
         <div className="graph">
           <div className="content-list">
-            <Text>bbb</Text>
+            <Text>Text</Text>
           </div>
         </div>
         <RegexInput />
       </div>
       <div id="editor-container" className={containerClassName}>
-        <div className="content" id="editor-content">
-          <Button type="abort" width="100%">
-            Bolio UI
-          </Button>
-          <Button type="abort" width="100%">
-            Bolio Icons
-          </Button>
-          <Button type="abort" width="100%">
-            Bolio Me
-          </Button>
-          <Button type="abort" width="100%">
-            <Heart fill="red" stroke="red" height={12} width={12} />
-            <Spacer w={0.5} /> Sponsor
-          </Button>
-        </div>
+        <Tabs
+          value={tabValue}
+          onChange={(value: string) => setTabValue(value)}
+          hideDivider
+        >
+          <div className="content" id="editor-content">
+            <Tabs.Item
+              label={
+                <>
+                  <CompassIcon /> Examples
+                </>
+              }
+              value="examples"
+            >
+              <Container>
+                <Grid.Container gap={2} justify="center">
+                  <Grid xs={12}>
+                    <Card w="100%">
+                      <Text p>"Explain quantum computing in simple terms"</Text>
+                    </Card>
+                  </Grid>
+                  <Grid xs={12}>
+                    <Card w="100%">
+                      <Text p>"Explain quantum computing in simple terms"</Text>
+                    </Card>
+                  </Grid>
+                  <Grid xs={12}>
+                    <Card w="100%">
+                      <Text p>"Explain quantum computing in simple terms"</Text>
+                    </Card>
+                  </Grid>
+                </Grid.Container>
+              </Container>
+            </Tabs.Item>
+            <Tabs.Item
+              label={
+                <>
+                  <StarIcon /> Capabilities
+                </>
+              }
+              value="capabilities"
+            >
+              <Container>
+                <Grid.Container gap={2} justify="center">
+                  <Grid xs={12}>
+                    <Card w="100%">
+                      <Text p>Trained to decline inappropriate requests</Text>
+                    </Card>
+                  </Grid>
+                </Grid.Container>
+              </Container>
+            </Tabs.Item>
+            <Tabs.Item
+              label={
+                <>
+                  <AlertTriangleIcon /> Limitations
+                </>
+              }
+              value="limitations"
+            >
+              <Container>
+                <Grid.Container gap={2} justify="center">
+                  <Grid xs={12}>
+                    <Card w="100%">
+                      <Text p>
+                        May occasionally generate incorrect information
+                      </Text>
+                    </Card>
+                  </Grid>
+                  <Grid xs={12}>
+                    <Card w="100%">
+                      <Text p>
+                        May occasionally produce harmful instructions or biased
+                        content
+                      </Text>
+                    </Card>
+                  </Grid>
+                  <Grid xs={12}>
+                    <Card w="100%">
+                      <Text p>
+                        Limited knowledge of world and events after 2021
+                      </Text>
+                    </Card>
+                  </Grid>
+                </Grid.Container>
+              </Container>
+            </Tabs.Item>
+          </div>
+        </Tabs>
         <footer onClick={collapseEditor}>
-          <ChevronsRight color={palette.accents_5} fontSize={20} />
+          <ChevronsRightIcon color={palette.accents_5} fontSize={20} />
         </footer>
       </div>
       {editorCollapsed && (
         <span className="uncollapse-btn">
           <Button
-            iconRight={<ChevronsLeft />}
+            iconRight={<ChevronsLeftIcon />}
             auto
             shadow
             onClick={unCollapseEditor}
@@ -74,7 +166,7 @@ function Home() {
       )}
       <style jsx>{`
         .wrapper {
-          width: calc(100% - 275px);
+          width: calc(100% - 400px);
           height: calc(100vh - 64px);
           background: ${palette.accents_1};
           display: flex;
@@ -105,16 +197,17 @@ function Home() {
         }
 
         .container {
+          flex: 1;
           position: fixed;
-          top: 64px;
+          top: 62px;
           right: 0;
           height: calc(100% - 64px);
-          width: 275px;
+          width: 400px;
           border-left: 1px solid ${palette.accents_2};
           transition: transform 0.3s ease-out;
         }
         .collapsed-container {
-          transform: translateX(275px);
+          transform: translateX(400px);
         }
 
         footer {
