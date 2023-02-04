@@ -1,5 +1,13 @@
 import React from 'react'
-import { Section, Text, Link, Container, Grid } from '@bolio-ui/core'
+import {
+  Section,
+  Text,
+  Link,
+  Container,
+  Grid,
+  Button,
+  Spacer
+} from '@bolio-ui/core'
 import { Heart } from '@bolio-ui/icons'
 
 function Footer() {
@@ -12,7 +20,7 @@ function Footer() {
           alignContent="center"
           style={{ textAlign: 'center' }}
         >
-          <Grid>
+          <Grid xs={12} md={5} justify="flex-start">
             <Text h6 my={0}>
               MADE & DESIGNED WITH
               <Heart
@@ -31,6 +39,20 @@ function Footer() {
               >
                 BRUNO ANDRADE
               </Link>
+            </Text>
+          </Grid>
+          <Grid xs={12} md={7} justify="flex-end">
+            <Text h6 my={0}>
+              <Button type="abort" auto>
+                Bolio Icons
+              </Button>
+              <Button type="abort" auto>
+                Bolio Me
+              </Button>
+              <Button type="abort" auto>
+                <Heart fill="red" stroke="red" height={12} width={12} />
+                <Spacer w={0.5} /> Sponsor
+              </Button>
             </Text>
           </Grid>
         </Grid.Container>
