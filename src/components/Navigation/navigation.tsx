@@ -156,24 +156,10 @@ const Navigation: React.FC = () => {
           height: 2.25rem;
           padding: 0;
         }
-
         .logo {
           padding: 0 ${theme.layout.gap};
           margin-bottom: 3px;
         }
-        .tabs {
-          padding: 0 ${theme.layout.gap};
-          margin-bottom: 3px;
-        }
-        .tabs :global(.content) {
-          display: none;
-        }
-        @media only screen and (max-width: ${theme.breakpoints.md.max}) {
-          .tabs {
-            display: none;
-          }
-        }
-
         .controls {
           display: flex;
           align-items: center;

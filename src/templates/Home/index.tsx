@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Text, Button, Tabs, useTheme } from '@bolio-ui/core'
+import { Text, Button, useTheme, Spacer } from '@bolio-ui/core'
 import Base from 'src/templates/Base'
-import { ChevronsRight, ChevronsLeft } from '@bolio-ui/icons'
+import { ChevronsRight, ChevronsLeft, Heart } from '@bolio-ui/icons'
 // import { Formik } from 'formik'
 // import * as Yup from 'yup'
 import RegexInput from './regex-input'
@@ -40,32 +40,26 @@ function Home() {
             <Text>bbb</Text>
           </div>
         </div>
-        <RegexInput
-        // regex={regex}
-        // literal={literal}
-        // escapeBackslash={escapeBackslash!}
-        // flags={ast.flags}
-        // onChange={setRegex}
-        // onFlagsChange={handleFlagsChange}
-        // onEscapeBackslashChange={handleEscapeBackslashChange}
-        // onCopy={handleCopyPermalink}
-        />
+        <RegexInput />
       </div>
-
       <div id="editor-container" className={containerClassName}>
-        <Tabs
-          value={1}
-          // onChange={(value: string) => setTabValue(value as Tab)}
-          hideDivider
-        >
-          <div className="content" id="editor-content">
-            <Tabs.Item value="legend" label={'legend'}>
-              <Text>A </Text>
-            </Tabs.Item>
-          </div>
-        </Tabs>
+        <div className="content" id="editor-content">
+          <Button type="abort" width="100%">
+            Bolio UI
+          </Button>
+          <Button type="abort" width="100%">
+            Bolio Icons
+          </Button>
+          <Button type="abort" width="100%">
+            Bolio Me
+          </Button>
+          <Button type="abort" width="100%">
+            <Heart fill="red" stroke="red" height={12} width={12} />
+            <Spacer w={0.5} /> Sponsor
+          </Button>
+        </div>
         <footer onClick={collapseEditor}>
-          <ChevronsRight color={palette.secondary} fontSize={20} />
+          <ChevronsRight color={palette.accents_5} fontSize={20} />
         </footer>
       </div>
       {editorCollapsed && (
@@ -127,7 +121,7 @@ function Home() {
           height: 45px;
           text-align: center;
           line-height: 45px;
-          border-top: 2px solid ${palette.accents_1};
+          border-top: 1px solid ${palette.accents_2};
           cursor: pointer;
         }
         footer :global(svg) {
@@ -151,7 +145,7 @@ function Home() {
         }
         .content {
           position: relative;
-          height: calc(100%);
+          height: calc(100% - 45px);
           overflow-y: auto;
         }
         .container > :global(.tabs > header) {
