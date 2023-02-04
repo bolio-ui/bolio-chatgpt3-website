@@ -31,11 +31,11 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>
-          Bolio Chat GPT - Answer questions based on existing knowledge
+          Bolio ChatGPT - Answer questions based on existing knowledge
         </title>
         <meta
           name="description"
-          content="Bolio Chat GPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure."
+          content="Bolio ChatGPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure."
         />
         <Favicon />
       </Head>
@@ -43,6 +43,23 @@ function App({ Component, pageProps }: AppProps) {
         <SettingsContext.Provider value={{ themeType, switchTheme }}>
           <DefaultSeo {...SEO} />
           <CssBaseline />
+          <style global jsx>{`
+            body {
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              text-rendering: optimizeLegibility;
+              font-size: 1rem;
+              line-height: 1.5;
+              margin: 0;
+              padding: 0;
+              min-height: 100%;
+              position: relative;
+              overflow-x: hidden;
+              font-family: 'Inter', -apple-system, BlinkMacSystemFont,
+                'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+                'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            }
+          `}</style>
           <Navigation />
           <Component {...pageProps} />
         </SettingsContext.Provider>

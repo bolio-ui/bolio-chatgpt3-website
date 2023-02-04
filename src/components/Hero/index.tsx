@@ -1,14 +1,5 @@
 import React from 'react'
-import {
-  Text,
-  Container,
-  Grid,
-  Row,
-  Col,
-  Section,
-  Button,
-  Link
-} from '@bolio-ui/core'
+import { Text, Container, Grid, Row, Col, Section } from '@bolio-ui/core'
 
 interface Props {
   content: { title: string; description: string }
@@ -49,30 +40,6 @@ function Hero({ content }: Props) {
               </Text>
             </Col>
           </Row>
-        </Grid.Container>
-        <Grid.Container gap={2} justify="center" alignItems="center">
-          <Grid xs={12} sm={6} md={2}>
-            <Link
-              href="https://bolio-ui.com/docs/components/icons/"
-              target="_blank"
-              width="100%"
-            >
-              <Button type="secondary-light" width="100%" rounded>
-                Get Started
-              </Button>
-            </Link>
-          </Grid>
-          <Grid xs={12} sm={6} md={3}>
-            <Link
-              href="/download/bolio-ui-icons.zip"
-              width="100%"
-              target="_blank"
-            >
-              <Button rounded width="100%">
-                Download Pack
-              </Button>
-            </Link>
-          </Grid>
         </Grid.Container>
       </Container>
     </Section>

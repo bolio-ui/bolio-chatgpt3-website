@@ -54,7 +54,7 @@ const Navigation: React.FC = () => {
                 justify="flex-start"
                 style={{ marginTop: '8px' }}
               >
-                <Logo name="Bolio Chat GPT" />
+                <Logo name="Bolio ChatGPT" />
               </Grid>
               <Grid xs={6} md={6} justify="flex-end">
                 <div className="controls">
