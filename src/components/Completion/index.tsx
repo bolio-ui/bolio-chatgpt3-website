@@ -57,7 +57,7 @@ const components = {
     <Image
       alt={props.alt}
       ratio="16/9"
-      sx={{ borderRadius: 2, my: 5 }}
+      style={{ borderRadius: 2, my: 5 }}
       {...props}
     />
   ),
