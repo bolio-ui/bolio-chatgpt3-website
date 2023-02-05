@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Configuration, OpenAIApi } from 'openai'
 import {
   Text,
@@ -39,6 +39,8 @@ function Home() {
 
   const [threadSize] = useState(3)
 
+  const messagesEndRef = useRef(null)
+
   const [tabValue, setTabValue] = useState<string>('examples')
   const [editorCollapsed, setEditorCollapsed] = useState(false)
   const isMobile = useMediaQuery(650)
@@ -65,7 +67,7 @@ function Home() {
 
     try {
       const configuration = new Configuration({
-        apiKey: process.env.NEXT_OPEN_AI_KE
+        apiKey: process.env.NEXT_OPEN_AI_KEY
       })
 
       const openai = new OpenAIApi(configuration)
@@ -74,7 +76,7 @@ function Home() {
         model: 'text-davinci-003',
         prompt: `${promptOptions}${conversation}\nUser: ${question}.\n`,
         top_p: 1,
-        max_tokens: 100,
+        max_tokens: 512,
         temperature: 0.5,
         n: 1,
         stream: false
@@ -99,9 +101,13 @@ function Home() {
     }
   }
 
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   useEffect(() => {
-    window.scrollTo(0, document.body.scrollHeight)
-  }, [chatResponse])
+    scrollToBottom()
+  }, [chatResponse, loading])
 
   useEffect(() => {
     if (chatResponse.length > threadSize) {
@@ -123,26 +129,32 @@ function Home() {
 
   return (
     <Base>
-      <div className="wrapper" style={style}>
+      <div className="wrapper" style={style} ref={messagesEndRef}>
         <div className="graph">
           <div className="content-list">
             {chatResponse.length ? (
               chatResponse.map((item, index) => (
-                <Completion {...item} key={index} />
+                <>
+                  <Completion {...item} key={index} />
+                  <div ref={messagesEndRef} />
+                </>
               ))
             ) : !loading ? (
               <Text h3 style={{ textAlign: 'center' }}>
                 {initialText}
               </Text>
             ) : null}
-
             {loading && (
-              <Loading type="warning" style={{ width: '100%' }}>
-                {loaderText}
-              </Loading>
+              <>
+                <Loading type="warning" style={{ width: '100%' }}>
+                  {loaderText}
+                </Loading>
+                <div ref={messagesEndRef} />
+              </>
             )}
           </div>
         </div>
+
         <Prompt {...forPrompt} />
       </div>
       <div id="editor-container" className={containerClassName}>
@@ -169,12 +181,16 @@ function Home() {
                   </Grid>
                   <Grid xs={12}>
                     <Card w="100%">
-                      <Text p>"Explain quantum computing in simple terms"</Text>
+                      <Text p>
+                        "Got any creative ideas for a 10 year old’s birthday?"
+                      </Text>
                     </Card>
                   </Grid>
                   <Grid xs={12}>
                     <Card w="100%">
-                      <Text p>"Explain quantum computing in simple terms"</Text>
+                      <Text p>
+                        "How do I make an HTTP request in Javascript?"
+                      </Text>
                     </Card>
                   </Grid>
                 </Grid.Container>

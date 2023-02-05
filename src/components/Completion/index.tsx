@@ -22,25 +22,26 @@ interface Props {
 const Completion = ({ botResponse, promptQuestion, totalTokens }: Props) => {
   console.log('🚀 ~ file: index.tsx:23 ~ Completion ~ totalTokens', totalTokens)
   return (
-    <Grid>
-      <Card>
-        <Row align="middle">
-          <div style={{ marginRight: 10 }}>
-            <Avatar
-              src="https://i.pravatar.cc/150?img=60"
-              isSquare
-              width={1.2}
-              height={1.2}
-            />
-          </div>
-          <Text b>{promptQuestion}</Text>
-        </Row>
-      </Card>
-      <Divider />
-      <ReactMarkdown rehypePlugins={[rehypeRaw]} components={components}>
-        {botResponse}
-      </ReactMarkdown>
-    </Grid>
+    <Grid.Container gap={2}>
+      <Grid xs direction="column">
+        <Card mb={1}>
+          <Row align="middle">
+            <div style={{ marginRight: 10 }}>
+              <Avatar
+                src="https://i.pravatar.cc/150?img=60"
+                isSquare
+                width={1.2}
+                height={1.2}
+              />
+            </div>
+            <Text b>{promptQuestion}</Text>
+          </Row>
+        </Card>
+        <ReactMarkdown rehypePlugins={[rehypeRaw]} components={components}>
+          {botResponse}
+        </ReactMarkdown>
+      </Grid>
+    </Grid.Container>
   )
 }
 
