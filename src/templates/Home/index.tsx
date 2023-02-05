@@ -33,7 +33,7 @@ function Home() {
   const [conversation, setConversation] = useState<string[]>([])
   const promptOptions = `Respond in markdown and use a codeblock with the language if there is code.`
   const [initialText] = useState(
-    'Say whatever you want and Bolio ChatGPT makes it happen... 🪄✨'
+    'Say something and Bolio ChatGPT makes it happen... 🪄✨'
   )
   const [loaderText] = useState('Making it happen 🪄 ✨✨✨')
 

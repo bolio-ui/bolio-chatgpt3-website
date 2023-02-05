@@ -20,7 +20,7 @@ function Home() {
     <>
       <NextSeo
         title={
-          '404: Page not found | Bolio ChatGPT - Answer questions based on existing knowledge'
+          '404: Page not found | Bolio ChatGPT - Say something and watch it happen'
         }
         description={
           'Bolio ChatGPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure.'
@@ -28,7 +28,7 @@ function Home() {
         openGraph={{
           url: `${router.pathname}`,
           title:
-            '404: Page not found | Bolio ChatGPT - Answer questions based on existing knowledge',
+            '404: Page not found | Bolio ChatGPT - Say something and watch it happen',
           description:
             'Bolio ChatGPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure.',
           images: [
@@ -36,7 +36,7 @@ function Home() {
               url: '/img/cover.png',
               width: 1200,
               height: 630,
-              alt: '404: Not | Bolio ChatGPT - Answer questions based on existing knowledge'
+              alt: '404: Not | Bolio ChatGPT - Say something and watch it happen'
             }
           ]
         }}
