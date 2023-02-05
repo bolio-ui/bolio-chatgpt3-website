@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Configuration, OpenAIApi } from 'openai'
 import {
   Text,
   Button,
@@ -6,7 +7,9 @@ import {
   Card,
   Grid,
   Container,
-  Tabs
+  Tabs,
+  useToasts,
+  Loading
 } from '@bolio-ui/core'
 import {
   ChevronsRight as ChevronsRightIcon,
@@ -17,12 +20,24 @@ import {
 } from '@bolio-ui/icons'
 import { useMediaQuery } from 'src/hooks/useMediaQuery'
 import Base from 'src/templates/Base'
-import InputChat from 'src/components/InputChat'
-// import { Formik } from 'formik'
-// import * as Yup from 'yup'
+import Prompt from 'src/components/Prompt'
+import Completion from 'src/components/Completion'
 
 function Home() {
+  const { setToast } = useToasts()
   const { palette, type: themeType } = useTheme()
+
+  const [loading, setLoading] = useState(false)
+
+  const [chatResponse, setChatResponse] = useState([])
+  const [conversation, setConversation] = useState<string[]>([])
+  const promptOptions = `Respond in markdown and use a codeblock with the language if there is code.`
+  const [initialText] = useState(
+    'Say whatever you want and Bolio ChatGPT makes it happen... 🪄✨'
+  )
+  const [loaderText] = useState('Making it happen 🪄 ✨✨✨')
+
+  const [threadSize] = useState(3)
 
   const [tabValue, setTabValue] = useState<string>('examples')
   const [editorCollapsed, setEditorCollapsed] = useState(false)
@@ -31,18 +46,6 @@ function Home() {
   useEffect(() => {
     setTabValue(tabValue)
   }, [tabValue, setTabValue])
-
-  // const initialValues = {
-  //   text: ''
-  // }
-
-  // const validationSchema = Yup.object().shape({
-  //   text: Yup.string()
-  //     .required('Text is required field')
-  //     .min(3, 'This field must have at least 3 characters')
-  // })
-
-  // const handleSubmit = React.useCallback((values, { resetForm }) => {}, [])
 
   useEffect(() => {
     setEditorCollapsed(isMobile)
@@ -57,15 +60,90 @@ function Home() {
 
   const style = editorCollapsed ? { width: '100%' } : {}
 
+  const onSubmit = async (question) => {
+    setLoading(true)
+
+    try {
+      const configuration = new Configuration({
+        apiKey: process.env.NEXT_OPEN_AI_KE
+      })
+
+      const openai = new OpenAIApi(configuration)
+
+      const response = await openai.createCompletion({
+        model: 'text-davinci-003',
+        prompt: `${promptOptions}${conversation}\nUser: ${question}.\n`,
+        top_p: 1,
+        max_tokens: 100,
+        temperature: 0.5,
+        n: 1,
+        stream: false
+      })
+
+      const newChat = {
+        botResponse: response.data.choices[0].text,
+        promptQuestion: question,
+        totalTokens: response.data.usage.total_tokens
+      }
+
+      setLoading(false)
+      setChatResponse([...chatResponse, newChat])
+    } catch (error) {
+      setLoading(false)
+      setToast({
+        text: error.response.data.error.message,
+        type: 'secondary',
+        delay: 3000
+      })
+      console.log(error.response)
+    }
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, document.body.scrollHeight)
+  }, [chatResponse])
+
+  useEffect(() => {
+    if (chatResponse.length > threadSize) {
+      const newArray = [...chatResponse]
+      newArray.splice(0, newArray.length - threadSize)
+      setConversation(
+        newArray.map((chat) => `${chat.promptQuestion}\n${chat.botResponse}\n`)
+      )
+    } else {
+      setConversation(
+        chatResponse.map(
+          (chat) => `${chat.promptQuestion}\n${chat.botResponse}\n`
+        )
+      )
+    }
+  }, [chatResponse, threadSize])
+
+  const forPrompt = { onSubmit, loading }
+
   return (
     <Base>
       <div className="wrapper" style={style}>
         <div className="graph">
           <div className="content-list">
-            <Text>Text</Text>
+            {chatResponse.length ? (
+              chatResponse.map((item, index) => (
+                <Completion {...item} key={index} />
+              ))
+            ) : !loading ? (
+              <Text h3 style={{ textAlign: 'center' }}>
+                {initialText}
+              </Text>
+            ) : null}
+
+            {loading && (
+              <Loading type="warning" style={{ width: '100%' }}>
+                {loaderText}
+              </Loading>
+            )}
           </div>
         </div>
-        <InputChat />
+        <Prompt {...forPrompt} />
       </div>
       <div id="editor-container" className={containerClassName}>
         <Tabs
@@ -199,8 +277,9 @@ function Home() {
             : 'rgba(255, 255, 255, 0.25)'};
         }
         .content-list {
+          flex: 1;
           margin: auto;
-          padding: 0 24px;
+          padding: 30px;
         }
 
         .container {
