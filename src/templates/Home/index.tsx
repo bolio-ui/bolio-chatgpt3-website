@@ -127,6 +127,11 @@ function Home() {
 
   const forPrompt = { onSubmit, loading }
 
+  const reset = () => {
+    setChatResponse([])
+    setConversation([])
+  }
+
   return (
     <Base>
       <div className="wrapper" style={style} ref={messagesEndRef}>
@@ -155,7 +160,7 @@ function Home() {
           </div>
         </div>
 
-        <Prompt {...forPrompt} />
+        <Prompt {...forPrompt} reset={reset} />
       </div>
       <div id="editor-container" className={containerClassName}>
         <Tabs
