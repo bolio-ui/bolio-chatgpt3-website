@@ -1,5 +1,4 @@
 import React from 'react'
-import NextLink from 'next/link'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import {
@@ -21,23 +20,23 @@ function Home() {
     <>
       <NextSeo
         title={
-          '404: Page not found | Bolio UI - Amazing, modern and creative tools for React UI'
+          '404: Page not found | Bolio ChatGPT - Say something and watch it happen'
         }
         description={
-          'Make your development more amazing, modern and creative with tools for React.'
+          'Bolio ChatGPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure.'
         }
         openGraph={{
           url: `${router.pathname}`,
           title:
-            '404: Page not found | Bolio UI - Amazing, modern and creative tools for React UI',
+            '404: Page not found | Bolio ChatGPT - Say something and watch it happen',
           description:
-            'Make your development more amazing, modern and creative with tools for React.',
+            'Bolio ChatGPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure.',
           images: [
             {
               url: '/img/cover.png',
               width: 1200,
               height: 630,
-              alt: '404: Not | Bolio UI - Amazing, modern and creative tools for React UI'
+              alt: '404: Not | Bolio ChatGPT - Say something and watch it happen'
             }
           ]
         }}
@@ -61,22 +60,11 @@ function Home() {
             </Grid.Container>
             <Grid.Container gap={2} justify="center" alignItems="center">
               <Grid xs={6} sm={6} md={2}>
-                <Link
-                  href="https://bolio-ui.com/docs/components/icons"
-                  target="_blank"
-                  width="100%"
-                >
+                <Link href="/" target="_blank" width="100%">
                   <Button type="secondary" rounded width="100%">
-                    Get Started
-                  </Button>
-                </Link>
-              </Grid>
-              <Grid xs={6} sm={6} md={3}>
-                <NextLink href="/">
-                  <Button rounded width="100%">
                     Go to homepage
                   </Button>
-                </NextLink>
+                </Link>
               </Grid>
             </Grid.Container>
           </Container>

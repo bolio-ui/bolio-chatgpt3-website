@@ -20,15 +20,6 @@ const Navigation: React.FC = () => {
   const [expanded, setExpanded] = useState<boolean>(false)
   const [, setBodyHidden] = useBodyScroll(null, { delayReset: 300 })
 
-  const [sticky, setSticky] = useState(false)
-
-  useEffect(() => {
-    const scrollHandler = () =>
-      setSticky(document.documentElement.scrollTop > 0)
-    document.addEventListener('scroll', scrollHandler)
-    return () => document.removeEventListener('scroll', scrollHandler)
-  }, [setSticky])
-
   useEffect(() => {
     setBodyHidden(expanded)
   }, [expanded, setBodyHidden])
@@ -46,7 +37,7 @@ const Navigation: React.FC = () => {
     <>
       <nav className="menu_wrapper">
         <Container fluid>
-          <div className={`${sticky ? 'menu_sticky' : 'menu'}`}>
+          <div className="menu">
             <Grid.Container gap={1} justify="center">
               <Grid
                 xs={6}
@@ -54,7 +45,7 @@ const Navigation: React.FC = () => {
                 justify="flex-start"
                 style={{ marginTop: '8px' }}
               >
-                <Logo name="Bolio Icons" />
+                <Logo name="Bolio ChatGPT" />
               </Grid>
               <Grid xs={6} md={6} justify="flex-end">
                 <div className="controls">
@@ -121,12 +112,12 @@ const Navigation: React.FC = () => {
                       h="28px"
                       py={0}
                       px={0}
-                      aria-label="Toggle Purple mode"
+                      aria-label="Toggle Gray mode"
                       className="theme-button"
                       type="abort"
                       onClick={() =>
                         settings.switchTheme(
-                          theme.type === 'light' ? 'purple' : 'light'
+                          theme.type === 'light' ? 'gray' : 'light'
                         )
                       }
                     >
@@ -155,22 +146,7 @@ const Navigation: React.FC = () => {
           position: relative;
           overflow: hidden;
           z-index: 99;
-        }
-        .menu_sticky {
-          z-index: 1;
-          position: fixed;
-          z-index: 1100;
-          top: 0;
-          right: 0;
-          left: 0;
-          box-shadow: ${theme.type === 'dark'
-            ? 'rgba(255, 255, 255, 0.1) 0 0 20px 0'
-            : 'rgba(0, 0, 0, 0.1) 0 0 20px 0'};
-          backdrop-filter: saturate(180%) blur(10px);
-          transition: box-shadow 1s ease;
-          transition: backdrop-filter 1s ease;
-          padding-left: 15px;
-          padding-right: 15px;
+          border-bottom: 1px solid ${theme.palette.accents_2};
         }
         .menu_wrapper :global(.theme-button) {
           display: flex;
@@ -180,24 +156,10 @@ const Navigation: React.FC = () => {
           height: 2.25rem;
           padding: 0;
         }
-
         .logo {
           padding: 0 ${theme.layout.gap};
           margin-bottom: 3px;
         }
-        .tabs {
-          padding: 0 ${theme.layout.gap};
-          margin-bottom: 3px;
-        }
-        .tabs :global(.content) {
-          display: none;
-        }
-        @media only screen and (max-width: ${theme.breakpoints.md.max}) {
-          .tabs {
-            display: none;
-          }
-        }
-
         .controls {
           display: flex;
           align-items: center;

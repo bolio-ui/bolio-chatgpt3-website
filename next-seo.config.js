@@ -3,10 +3,10 @@ const DefaultSEO = {
     type: 'website',
     locale: 'en_US',
     url: 'https://icons.bolio-ui.com/',
-    site_name: 'Bolio Icons',
-    title: 'Bolio Icons - Simplicity, consistency and readability icons',
+    site_name: 'Bolio OpenAI',
+    title: 'Bolio ChatGPT - Say something and watch it happen',
     description:
-      'Bolio Icons is a collection of simply beautiful icons. Each icon is designed with an emphasis on simplicity, consistency and readability.'
+      'Bolio ChatGPT it is easy to operate: just feed it with part of a text, and the model will generate another part, following a similar style and structure.'
   },
   twitter: {
     handle: '@bolio_ui',
