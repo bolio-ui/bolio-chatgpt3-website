@@ -18,6 +18,18 @@
 
 This project was developed by Bolio UI. Visit [https://bolio-ui.com/docs/guide](https://bolio-ui.com/docs/guide) to start using this amazing UI library.
 
+## Quick Start
+
+1. First, run the development server:
+
+```bash
+yarn dev
+# or
+npm run dev
+```
+
+2. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
 ### Community
 
 We're excited to see the community adopt Bolio UI, raise issues, and provide feedback.
