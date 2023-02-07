@@ -1,11 +1,11 @@
 import React from 'react'
 import { Spacer, Input, Button, Tooltip, Spinner } from '@bolio-ui/core'
-import { Send as SendIcon } from '@bolio-ui/icons'
+import { Send as SendIcon, Trash as TrashIcon } from '@bolio-ui/icons'
 import Footer from 'src/components/Footer'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
-function Prompt({ onSubmit, loading }) {
+function Prompt({ onSubmit, loading, reset }) {
   const initialValues = {
     question: ''
   }
@@ -65,6 +65,15 @@ function Prompt({ onSubmit, loading }) {
                       onClick={handleSubmit}
                     />
                   </Tooltip>
+                  <Spacer w={0.5} />
+                  <Button
+                    icon={<TrashIcon />}
+                    type="error"
+                    auto
+                    scale={2 / 3}
+                    px={0.6}
+                    onClick={reset}
+                  />
                 </>
               )}
             </Formik>
