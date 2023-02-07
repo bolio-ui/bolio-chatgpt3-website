@@ -41,16 +41,17 @@ function Home() {
 
   const messagesEndRef = useRef(null)
 
-  const [tabValue, setTabValue] = useState<string>('examples')
-  const [editorCollapsed, setEditorCollapsed] = useState(false)
   const isMobile = useMediaQuery(650)
+
+  const [tabValue, setTabValue] = useState<string>('examples')
+  const [editorCollapsed, setEditorCollapsed] = useState(true)
 
   useEffect(() => {
     setTabValue(tabValue)
   }, [tabValue, setTabValue])
 
   useEffect(() => {
-    setEditorCollapsed(isMobile)
+    setEditorCollapsed(true)
   }, [isMobile])
 
   const collapseEditor = () => setEditorCollapsed(true)
@@ -283,7 +284,7 @@ function Home() {
         .graph {
           flex: 1;
           display: flex;
-          overflow: auto;
+          overflow-x: auto;
           border-bottom: 1px solid ${palette.accents_2};
         }
         .graph ::-webkit-scrollbar {
@@ -312,6 +313,8 @@ function Home() {
           width: 400px;
           border-left: 1px solid ${palette.accents_2};
           transition: transform 0.3s ease-out;
+          background-color: ${palette.accents_1};
+          z-index: 1;
         }
         .collapsed-container {
           transform: translateX(400px);
