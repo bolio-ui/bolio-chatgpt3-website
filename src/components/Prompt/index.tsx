@@ -53,7 +53,7 @@ function Prompt({ onSubmit, loading, reset }) {
                     onBlur={handleBlur('question')}
                   />
                   <Spacer w={0.5} />
-                  <Tooltip text="Enviar">
+                  <Tooltip text="Send">
                     <Button
                       iconRight={
                         loading ? <Spinner scale={1 / 2.5} /> : <SendIcon />
@@ -66,14 +66,16 @@ function Prompt({ onSubmit, loading, reset }) {
                     />
                   </Tooltip>
                   <Spacer w={0.5} />
-                  <Button
-                    icon={<TrashIcon />}
-                    type="error"
-                    auto
-                    scale={2 / 3}
-                    px={0.6}
-                    onClick={reset}
-                  />
+                  <Tooltip text="Clear conversation">
+                    <Button
+                      icon={<TrashIcon />}
+                      type="error"
+                      auto
+                      scale={2 / 3.3}
+                      px={0.6}
+                      onClick={reset}
+                    />
+                  </Tooltip>
                 </>
               )}
             </Formik>
