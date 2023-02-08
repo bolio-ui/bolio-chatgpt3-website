@@ -43,39 +43,48 @@ function Prompt({ onSubmit, loading, reset }) {
                 handleSubmit
               }) => (
                 <>
-                  <Input
-                    name="question"
-                    width="100%"
-                    disabled={loading}
-                    value={values.question}
-                    error={touched.question && errors.question}
-                    onChange={handleChange('question')}
-                    onBlur={handleBlur('question')}
-                  />
-                  <Spacer w={0.5} />
-                  <Tooltip text="Send">
-                    <Button
-                      iconRight={
-                        loading ? <Spinner scale={1 / 2.5} /> : <SendIcon />
+                  <form
+                    onSubmit={handleSubmit}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        handleSubmit()
                       }
-                      auto
-                      scale={2 / 3}
-                      px={0.6}
-                      disabled={!isValid}
-                      onClick={handleSubmit}
+                    }}
+                    style={{ flex: 1, display: 'flex' }}
+                  >
+                    <Input
+                      name="question"
+                      width="100%"
+                      disabled={loading}
+                      value={values.question}
+                      error={touched.question && errors.question}
+                      onChange={handleChange('question')}
+                      onBlur={handleBlur('question')}
                     />
-                  </Tooltip>
-                  <Spacer w={0.5} />
-                  <Tooltip text="Clear conversation">
-                    <Button
-                      icon={<TrashIcon />}
-                      type="error"
-                      auto
-                      scale={2 / 3.3}
-                      px={0.6}
-                      onClick={reset}
-                    />
-                  </Tooltip>
+                    <Spacer w={0.5} />
+                    <Tooltip text="Send">
+                      <Button
+                        iconRight={
+                          loading ? <Spinner scale={1 / 1.9} /> : <SendIcon />
+                        }
+                        auto
+                        scale={2 / 2.5}
+                        px={0.6}
+                        disabled={!isValid}
+                      />
+                    </Tooltip>
+                    <Spacer w={0.5} />
+                    <Tooltip text="Clear conversation">
+                      <Button
+                        icon={<TrashIcon />}
+                        type="error"
+                        auto
+                        scale={2 / 2.7}
+                        px={0.6}
+                        onClick={reset}
+                      />
+                    </Tooltip>
+                  </form>
                 </>
               )}
             </Formik>
