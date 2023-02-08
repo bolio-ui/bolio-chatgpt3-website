@@ -107,7 +107,9 @@ function Home() {
   }
 
   useEffect(() => {
-    scrollToBottom()
+    if (chatResponse.length || loading) {
+      scrollToBottom()
+    }
   }, [chatResponse, loading])
 
   useEffect(() => {
