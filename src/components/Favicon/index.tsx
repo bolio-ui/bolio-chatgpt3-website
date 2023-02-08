@@ -49,12 +49,6 @@ function Favicon() {
       <link
         rel="icon"
         type="image/png"
-        sizes="192x192"
-        href="/img/favicon/android-icon-192x192.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
         sizes="32x32"
         href="/img/favicon/favicon-32x32.png"
       />
