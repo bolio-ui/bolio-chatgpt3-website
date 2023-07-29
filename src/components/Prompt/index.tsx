@@ -71,6 +71,7 @@ function Prompt({ onSubmit, loading, reset }) {
                         scale={2 / 2.5}
                         px={0.6}
                         disabled={!isValid}
+                        onClick={() => handleSubmit()}
                       />
                     </Tooltip>
                     <Spacer w={0.5} />
